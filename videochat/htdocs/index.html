@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>簡易ビデオチャット</title>
+	<style>
+		/* 自分の映像は反転 */
+		#localStream { transform: scaleX(-1); }
+		.hide { display: none; }
+	</style>
+</head>
+<body>
+	<!-- ログアウトボタン -->
+	<button id="logout" class="hide">ログアウト</button>
+	<form id="loginForm">
+		<!-- ログインフォーム -->
+		<div>
+			<label for="userName">ユーザー名：</label>
+			<input type="text" id="userName">
+		</div>
+		<button id="submit">ログイン</button>
+	</form>
+	<!-- 参加者リスト -->
+	<ul id="peers" class="hide"></ul>
+	<div>
+		<!-- 映像表示エリア -->
+		<video id="localStream" muted autoplay></video><!-- 自分 -->
+		<span id="remoteStreams"></span><!-- 相手 -->
+	</div>
+	<!-- 終了ボタン -->
+	<button id="bye" class="hide">終了</button>
+
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="./videochat.js"></script>
+</body>
+</html>
