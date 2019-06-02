@@ -50,6 +50,7 @@ ws.onmessage = async (e) => {
 function createRTCPeerConnection(){
     let pc = new RTCPeerConnection({
         iceServers: [{urls: 'stun:stun.l.google.com:19302'}],
+        // iceServers: [{urls: 'stun:160.16.144.229:3478'}],
         iceTransportPolicy: 'all'
     });
 
