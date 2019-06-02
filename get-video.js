@@ -1,24 +1,3 @@
-// let
-// try, catch
-// async
-// await
-// document オブジェクト
-// document.getElementById()
-// captureButton オブジェクト
-// captureButton.addEventListener()
-// navigatorオブジェクト
-// navigator.mediaDevices オブジェクト
-// navigator.mediaDevices.getUserMedia()
-// document.createElement()
-// mediaElement オブジェクト
-// mediaElement.srcObject オブジェクト
-// mediaElement.setAttribute()
-// document.body オブジェクト
-// document.body.appendChild()
-// console.log()
-// alert()
-// event.preventDefault()
-
 let captureButton = document.getElementById('capture');
 captureButton.addEventListener('click', async (event) => {
     try{
