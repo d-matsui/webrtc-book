@@ -1,0 +1,221 @@
+#
+#
+# Copyright (c) 2019, Daiki Matsui.
+# All rights reserved.
+# 
+# $Id: $
+# 
+
+* わからなかったこと
+** let
+
+let 文はブロックスコープの局所変数を宣言します。任意で値を代入して初期
+化できます。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/let
+
+** try, catch
+
+try...catch 文はテストしたい文のブロックを指定し、さらに投げられるであ
+ろう例外に対する 1 つ以上の対処方法を指定します。例外が投げられると
+try...catch 文がそれを受け取ります。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Exception_Handling_Statements/try...catch_Statement
+
+** async, await
+
+async function 宣言は、 AsyncFunction オブジェクトを返す 非同期関数 を
+定義します。非同期関数は非同期でイベントループを介して実行され、暗黙的
+にPromiseを返します。なおコードのシンタックス及び構造は通常の同期関数
+と非常に似たものになります。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Statements/async_function
+
+----
+function resolveAfter2Seconds() {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      resolve('resolved');
+    }, 2000);
+  });
+}
+
+async function asyncCall() {
+  console.log('calling');
+  var result = await resolveAfter2Seconds();
+  console.log(result);
+  // expected output: 'resolved'
+}
+
+asyncCall();
+----
+
+await 演算子は、async function によって Promise が返されるのを待機する
+ために使用します。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Operators/await
+
+【JavaScript入門】5分で理解！async / awaitの使い方と非同期処理の書き方
+https://www.sejuku.net/blog/69618
+
+** promise
+
+Promise オブジェクトは非同期処理の最終的な完了処理（もしくは失敗）およ
+びその結果の値を表現します。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Promise
+
+Promiseを使う
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Guide/Using_promises
+
+** アロー関数
+
+アロー関数式は、より短く記述できる、通常の function 式の代替構文です。
+また、this, arguments, super, new.target を束縛しません。アロー関数式
+は、メソッドでない関数に最適で、コンストラクタとして使うことはできませ
+ん。
+https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Functions/Arrow_functions
+
+JavaScript アロー関数を説明するよ
+https://qiita.com/may88seiji/items/4a49c7c78b55d75d693b
+
+関数を変数に代入することの意義がよくわからない
+
+function を定義して呼びだせば良いだけなのに、変数を定義して新たに定義
+した関数を代入? して、引数付きで変数を呼び出して? をやっている
+
+変数に引数をつけるのもよくわからない
+
+----
+function myFunc(name) {
+  console.log(name);
+}
+
+myFunc(name)
+----
+
+じゃなく、
+
+----
+var myFunc = function(name) {
+  console.log(name);
+}
+
+myFunc(name)
+----
+
+とするのはなぜか
+
+** document インターフェイス
+
+Document インターフェイスは、ブラウザーに読み込まれたウェブページを表
+し、DOM ツリー であるウェブページのコンテンツへのエントリーポイントと
+して働きます。 DOM ツリーは <body> や <table> など、多数の要素を持ちま
+す。これはページの URL を取得したり文書で新たな要素を作成するなど、文
+書全体に関わる機能を提供します。
+https://developer.mozilla.org/ja/docs/Web/API/Document
+
+ドキュメントオブジェクトモデル (DOM)
+https://developer.mozilla.org/ja/docs/Web/API/Document_Object_Model
+
+** document.getElementById()
+
+Document の getElementById() メソッドは、 id プロパティが指定された文
+字列に一致する要素を表す Element オブジェクトを返します。要素の ID は
+指定されていれば固有であることが求められているため、特定の要素にすばや
+くアクセスするには便利な方法です。
+https://developer.mozilla.org/ja/docs/Web/API/Document/getElementById
+
+** captureButton オブジェクト
+** captureButton.addEventListener()
+** navigator インターフェイス
+
+Navigator インターフェイスは、ユーザーエージェントの状態や身元情報を表
+します。スクリプトからその情報を問い合わる、および活動を続けるためにそ
+れら自体を登録することができます。
+https://developer.mozilla.org/ja/docs/Web/API/Navigator
+
+** navigator.mediaDevices インターフェイス
+
+MediaDevices インターフェイスは、カメラやマイク、同様に画面共有のよう
+な接続されたメディア入力デバイスへのアクセスを提供します。要するに、メ
+ディアデータのソースであるハードウェアにアクセスすることができるように
+なります。
+https://developer.mozilla.org/ja/docs/Web/API/MediaDevices
+
+** navigator.mediaDevices.getUserMedia()
+
+MediaDevices.getUserMedia() メソッドは、要求された種類のメディアを含む
+トラックを持つ MediaStream を生成するメディア入力を使用する許可をユー
+ザーに求めます。このストリームには、例えば、動画トラック (カメラ、ビデ
+オ録画機器、スクリーン共有サービスなどのような、ハードウェアまたは仮想
+ビデオソースによって生み出される)、音声トラック (同様に、マイク、A/D
+変換器などの物理的または仮想オーディオソースによって生み出される)、そ
+の他の可能な種別を含めることができます。
+https://developer.mozilla.org/ja/docs/Web/API/MediaDevices/getUserMedia
+
+** document.createElement()
+
+HTML ドキュメントにおいて Document.createElement() メソッドは、tagName
+で指定した HTML 要素を生成する、あるいは tagName を認識できない場合に
+HTMLUnknownElement を生成します。XUL ドキュメントでは、指定した XUL 要
+素を生成します。その他のドキュメントでは、null 名前空間 URI の要素を生
+成します。
+https://developer.mozilla.org/ja/docs/Web/API/Document/createElement
+
+** mediaElement インターフェイス
+
+HTMLMediaElement インターフェイスは、 HTMLElement に音声や動画で一般的
+なメディアに関する基本的な能力の対応に必要なプロパティやメソッドを追加
+します。 HTMLVideoElement および HTMLAudioElement 要素はどちらも、この
+インターフェイスを継承しています。
+https://developer.mozilla.org/ja/docs/Web/API/HTMLMediaElement
+
+** mediaElement.srcObject
+
+HTMLMediaElement インターフェイスの srcObject プロパティは
+HTMLMediaElement に関連付けられたメディアソースを提供するオブジェクト
+を設定または取得します。 このオブジェクトは MediaStream、MediaSource、
+Blob や(Blobから派生している) File です。
+https://developer.mozilla.org/ja/docs/Web/API/HTMLMediaElement/srcObject
+
+** mediaElement.setAttribute()
+** document.body プロパティ
+
+Document.body プロパティは、その文書の <body> または <frameset> ノード
+を表し、そのような要素がなければ null になります。
+https://developer.mozilla.org/ja/docs/Web/API/Document/body
+
+** document.body.appendChild()
+
+Node.appendChild() メソッドは、特定の親ノードの子ノードリストの末尾に
+ノードを追加します。追加しようとしたノードが既に存在していたら、それは
+現在の親ノードから除かれ、新しい親ノードに追加されます（他のノードに追
+加する前にそのノードを親ノードから削除する必要はありません）。
+
+これは、ノードが同時にドキュメントの 2 箇所に存在できないということを
+意味します。ノードがすでに親を持っている場合、最初にノードが削除された
+後、新しい位置の末尾に追加されます。Node.cloneNode() は、新しい親の末
+尾に追加する前に、ノードのコピーを作成するために使用できます。
+cloneNode で作成したコピーは自動的に同期を保たないことに注意してくださ
+い。
+
+このメソッドでは、異なるドキュメント間でノードを移動することはできませ
+ん。異なるドキュメントからノードを末尾に追加したい場合は、
+document.importNode() メソッドを使用する必要があります。
+https://developer.mozilla.org/ja/docs/Web/API/Node/appendChild
+
+** console.log()
+
+デバッガの Web コンソールにメッセージを出力します。
+https://developer.mozilla.org/ja/docs/Web/API/Console/log
+
+** alert()
+
+Window.alert() メソッドは、オプションの指定されたコンテンツと OK ボタ
+ンを持つ警告ダイアログを表示します。
+https://developer.mozilla.org/ja/docs/Web/API/Window/alert
+
+** event.preventDefault()
+
+Event インターフェースの preventDefault() メソッドは、イベントが明示的
+に処理されない場合に user agent に、そのデフォルトアクションを通常どお
+りに行うべきではないと伝えます。このイベントは通常、イベントリスナーの
+1つが stopPropagation() または stopImmediatePropagation() を呼び出し、
+いずれかが一度に伝播を終了しない限り、伝播し続けます。
+https://developer.mozilla.org/ja/docs/Web/API/Event/preventDefault
